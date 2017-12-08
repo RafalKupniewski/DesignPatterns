@@ -5,26 +5,26 @@ public class MainApp
 {
     public static void Main()
     {
-        // Create director and builders 
-
-        
-        //Console.WriteLine(DateTime.Now.Ticks);
-       
-
+        // tworzymy instancje director
         Director director = new Director();
+
+        //tworzymy instancje b1 i b2 dla buildera 1 i 2
         Builder b1 = new ConcreteBuilder1();
-         Builder b2 = new ConcreteBuilder2();
-        // Construct two products 
+        Builder b2 = new ConcreteBuilder2();
+        // wytwarzamy dwa produkty
+
+        //z instancji buildera b1 wytwarzamy produkt p1 i metoda show wyswietalmy arrayliste 
         director.Construct(b1);
         Product p1 = b1.GetResult();
         p1.Show();
 
+        //z instancji buildera b2 wytwarzamy produkt p2 i metoda show wyswietalmy arrayliste 
         director.Construct(b2);
         Product p2 = b2.GetResult();
         p2.Show();
         
         Console.WriteLine(DateTime.Now.ToString("h:mm:ss tt"));
-        //Console.WriteLine(DateTime.Now.Ticks);
+
         long a = DateTime.Now.Ticks;
 
         for (int i = 0; i < 10000000; i++)
@@ -36,19 +36,19 @@ public class MainApp
 
         }
         Console.WriteLine(DateTime.Now.ToString("h:mm:ss tt"));
-        //Console.WriteLine(DateTime.Now.Ticks);
+        
         long b = DateTime.Now.Ticks;
         Console.WriteLine((b - a)/ TimeSpan.TicksPerMillisecond );
 
-        // Wait for user 
+        // nacisnij guzik
         Console.Read();
     }
 }
 
-// "Director" 
+// 
 class Director
 {
-    // Builder uses a complex series of steps 
+    //  klasa konstruuje nam w builderze produkty 
     public void Construct(Builder builder)
     {
         builder.BuildPartA();
@@ -56,7 +56,7 @@ class Director
     }
 }
 
-// "Builder" 
+// "abstarkcyjna klasa builder" 
 abstract class Builder
 {
     public abstract void BuildPartA();
@@ -64,9 +64,10 @@ abstract class Builder
     public abstract Product GetResult();
 }
 
-// "ConcreteBuilder1" 
+// "klasa konkretna rozszerzajaca bulidera wytwarzajaca produkt Windows workstation" 
 class ConcreteBuilder1 : Builder
 {
+    //robimy instancje product i dodajemy do arraylisty czesci produktu    
     private Product product = new Product();
 
     public override void BuildPartA()
@@ -85,9 +86,10 @@ class ConcreteBuilder1 : Builder
     }
 }
 
-// "ConcreteBuilder2" 
+// "klasa konkretna rozszerzajaca bulidera wytwarzajaca produkt Linux server" 
 class ConcreteBuilder2 : Builder
-{
+{   
+    //robimy instancje product i dodajemy do arraylisty czesci produktu    
     private Product product = new Product();
 
     public override void BuildPartA()
@@ -106,7 +108,7 @@ class ConcreteBuilder2 : Builder
     }
 }
 
-// "Product" 
+// "laczenie produktow ;-)" 
 class Product
 {
     ArrayList parts = new ArrayList();
@@ -117,7 +119,8 @@ class Product
     }
 
     public void Show()
-    {
+    {   
+        //wyswietlamy z arraylisty elementy produktu
         Console.WriteLine("\nProduct Parts -------");
         foreach (string part in parts)
             Console.WriteLine(part);
@@ -125,8 +128,6 @@ class Product
 
     public void Show2()
     {
-        //Console.WriteLine("\nProduct Parts -------");
-        //foreach (string part in parts)
-            //Console.WriteLine(part);
+        //nic nie robie
     }
 }
