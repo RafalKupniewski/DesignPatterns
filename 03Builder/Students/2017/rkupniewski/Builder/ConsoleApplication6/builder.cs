@@ -48,7 +48,7 @@ public class MainApp
 // 
 class Director
 {
-    //  klasa konstruuje nam w builderze produkty 
+    //  klasa uruchamia nam obydwa buildery
     public void Construct(Builder builder)
     {
         builder.BuildPartA();

@@ -25,7 +25,7 @@ class Target
     }
 }
 
-// "rozszerzamy klase adapter o klase target i nadpisujemy metode request" 
+// "rozszerzamy klase adapter o klase target i nadpisujemy metode request z klasy adaptee" 
 class Adapter : Target
 {
     private Adaptee adaptee = new Adaptee();
@@ -37,7 +37,7 @@ class Adapter : Target
     }
 }
 
-// "klasa adaper" 
+// "klasa adaptee" 
 class Adaptee
 {
     public void SpecificRequest()
